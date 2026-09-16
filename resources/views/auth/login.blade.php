@@ -7,9 +7,14 @@
 @section('content')
     <div class="auth-container">
     <a href="{{ route('auth.register.index') }}" class="auth-link"> Регистрация </a>
+        @if(session('error'))
+            <div class="error">
+                {{ session('error') }}
+            </div>
+        @endif
         <form style="width: auto" action="{{ route('auth.login') }}" method="post" class="auth-form">
             @csrf
-            <input type="email" name="email" placeholder="Введите электронную почту" class="auth-input" >
+            <input type="email" name="email" placeholder="Введите электронную почту" class="auth-input" value="{{ old('email') }}">
             <input type="password" name="password" placeholder="Введите пароль" class="auth-input" >
             <button type="submit" class="auth-button"> Подтвердить </button>
         </form>

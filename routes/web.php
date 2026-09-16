@@ -14,3 +14,4 @@ Route::get('/profile', [UserController::class, 'indexProfile'])->name('auth.prof
 Route::get('/', [PostController::class, 'showPosts'])->name('posts.show');
 Route::post('/create', [PostController::class, 'makePost'])->name('posts.create');
 Route::get('/create', [PostController::class, 'indexPosts'])->name('posts.create.index');
+Route::post('/profile', [UserController::class, 'addAvatar'])->name('profile.avatar');

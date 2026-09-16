@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Attachment;
 use App\Models\Post;
+use bootstrap\Attachment;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
