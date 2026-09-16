@@ -10,7 +10,7 @@
     @enderror
     <div class="auth-container">
         <a href="{{ route('auth.login.index') }}" class="auth-link"> Уже есть аккаунт? Войти </a>
-        <form action="{{ route('auth.register') }}" method="post" class="auth-form">
+        <form style="width: auto" action="{{ route('auth.register') }}" method="post" class="auth-form">
             @csrf
             <input type="text" name="name" placeholder="Введите имя" class="auth-input">
             <input type="email" name="email" placeholder="Введите электронную почту" class="auth-input">
