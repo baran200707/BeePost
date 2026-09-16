@@ -18,7 +18,7 @@
             </div>
             <form class="avatar-form" action="{{ route('profile.avatar') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                <input type="file" name="avatar" accept="image/png,image/jpeg,image/webp">
+                <input style="cursor: pointer; border: 1px solid #ccc; border-radius: 5px;" type="file" name="avatar" accept="image/png,image/jpeg,image/webp">
                 <button type="submit">Загрузить аватар</button>
             </form>
             <form action="{{ route('auth.logout') }}" method="post">

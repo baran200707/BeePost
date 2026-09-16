@@ -193,3 +193,8 @@ header {
 .avatar {
     margin-left: 35%;
 }
+
+.header_avatar {
+    width: 55px;
+    margin: 30px;
+}
