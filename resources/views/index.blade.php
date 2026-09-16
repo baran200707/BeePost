@@ -6,6 +6,5 @@
 
 @section('content')
 @include('layouts.header')
-
-
+    <h1>Привествую смотрящих</h1>
 @endsection
