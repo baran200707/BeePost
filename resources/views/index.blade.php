@@ -8,10 +8,14 @@
     @include('layouts.header')
     <div class="posts-container">
         <h1>Приветствую смотрящих</h1>
+        @auth
+            <a href="{{ route('posts.create.index') }}">Создать пост</a>
+        @endauth
         @forelse($posts as $post)
             <article class="post">
                 <h2 class="post-title">{{ $post->title }}</h2>
                 <p class="post-content">{{ $post->content }}</p>
+                {{ $post->attachments->count() }}
                 @foreach($post->attachments as $attachment)
                     <img class="post-image" alt="{{ $attachment->file_name }}" src="{{ asset('storage/' . $attachment->file_path) }}">
                 @endforeach
@@ -21,7 +25,4 @@
         @endforelse
         {{ $posts->links() }}
     </div>
-    @auth
-        <a href="{{ route('posts.create.index') }}">Создать пост</a>
-    @endauth
 @endsection

@@ -37,7 +37,7 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
         $user->save();
-        return redirect('/');
+        return redirect('/auth/login');
     }
 
     public function login(Request $request) {
