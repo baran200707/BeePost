@@ -56,11 +56,13 @@ class UserController extends Controller
 
     public function addAvatar(Request $request) {
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $user = Auth::user();
         $avatar = $request->file('avatar');
-        $user->avatar = $avatar;
+        $path = $avatar->store('avatars', 'public');
+        $user->avatar = $path;
         $user->save();
+        return redirect('/profile');
     }
 }

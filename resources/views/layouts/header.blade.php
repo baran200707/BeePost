@@ -4,7 +4,7 @@
     @auth
         <a href="{{ route('auth.profile') }}">
             @if(auth()->getUser()->avatar != null)
-                <img class="header_avatar" alt="avatar" src="{{ asset(auth()->getUser()->avatar) }}">
+                <img class="header_avatar" src="{{ asset('storage/' . auth()->user()->avatar) }}" alt="avatar">
             @else
                 <img class="header_avatar" alt="noAvatar" src="{{ asset('user.png') }}">
             @endif

@@ -13,12 +13,22 @@
         @endauth
         @forelse($posts as $post)
             <article class="post">
+                <div class="post-author">
+                    <img class="post-avatar" src="{{ asset('storage/' .$post->user->avatar) }}" alt="avatar">
+                    <p class="post-author-name">{{ $post->user->name }}</p>
+                </div>
                 <h2 class="post-title">{{ $post->title }}</h2>
                 <p class="post-content">{{ $post->content }}</p>
-                {{ $post->attachments->count() }}
+                <div class="post-images">
                 @foreach($post->attachments as $attachment)
                     <img class="post-image" alt="{{ $attachment->file_name }}" src="{{ asset('storage/' . $attachment->file_path) }}">
                 @endforeach
+                </div>
+                <form action="{{ route('posts.delete') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="id" value="{{ $post->id }}">
+                    <button onclick="return confirm('Вы хотите удалить?');" type="submit">Удалить</button>
+                </form>
             </article>
         @empty
             <h1>Постов нету</h1>
