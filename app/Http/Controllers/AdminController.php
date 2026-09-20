@@ -18,16 +18,4 @@ class AdminController extends Controller
         $users = User::latest()->paginate(5);
         return view('admin.adminUsers', ['users' => $users]);
     }
-
-    public function deleteUser(Request $request) {
-        $user = User::findOrFail($request->id);
-        $posts = $user->posts;
-        foreach ($posts as $post) {
-            $post->attachments()->delete();
-            $post->delete();
-        }
-        Storage::disk('public')->deleteDirectory($user->avatar);
-        $user->delete();
-        return redirect('/admin/users');
-    }
 }

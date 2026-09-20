@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+
 class UserController extends Controller
 {
     public function indexLogin() {
@@ -64,5 +66,17 @@ class UserController extends Controller
         $user->avatar = $path;
         $user->save();
         return redirect('/profile');
+    }
+
+    public function deleteUser(Request $request) {
+        $user = User::findOrFail($request->id);
+        $posts = $user->posts;
+        foreach ($posts as $post) {
+            $post->attachments()->delete();
+            $post->delete();
+        }
+        Storage::disk('public')->deleteDirectory($user->avatar);
+        $user->delete();
+        return redirect('/admin/users');
     }
 }

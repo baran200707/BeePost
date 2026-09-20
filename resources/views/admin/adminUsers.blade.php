@@ -9,7 +9,7 @@
                     <p class="post-author-name">{{ $user->name }}</p>
                 </div>
                 @auth
-                    <form action="{{ route('admin.users.delete') }}" method="post">
+                    <form action="{{ route('user.delete') }}" method="post">
                         @csrf
                         <input type="hidden" name="id" value="{{ $user->id }}">
                         <button class="delete-button" onclick="return confirm('Вы хотите удалить?');" type="submit">

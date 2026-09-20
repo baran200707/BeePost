@@ -28,6 +28,13 @@
                 @csrf
                 <button type="submit">Выйти из аккаунта</button>
             </form>
+            <form action="{{ route('user.delete') }}" method="post">
+                @csrf
+                <input type="hidden" name="id" value="{{ auth()->getUser()->id }}">
+                <button class="delete-button" onclick="return confirm('Вы хотите удалить?');" type="submit">
+                    Удалить
+                </button>
+            </form>
         </div>
     @endauth
     @guest

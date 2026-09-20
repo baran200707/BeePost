@@ -19,4 +19,4 @@ Route::post('/profile', [UserController::class, 'addAvatar'])->name('profile.ava
 Route::post('/delete/post', [PostController::class, 'deletePost'])->name('posts.delete');
 Route::get('/admin/posts', [AdminController::class, 'showPosts'])->middleware('admin')->name('admin.index.posts');
 Route::get('/admin/users', [AdminController::class, 'showUsers'])->middleware('admin')->name('admin.index.users');
-Route::post('/delete/user', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
+Route::post('/delete/user', [UserController::class, 'deleteUser'])->name('user.delete');
