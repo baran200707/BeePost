@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Attachment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -45,6 +46,10 @@ class PostController extends Controller
 
     public function deletePost(Request $request) {
         $post = Post::findOrFail($request->id);
+        foreach($post->attachments as $attachment) {
+            Storage::disk('public')->delete($attachment->file_path);
+            $attachment->delete();
+        }
         $post->delete();
         return redirect('/');
     }

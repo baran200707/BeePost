@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\UserController;
@@ -15,4 +16,7 @@ Route::get('/', [PostController::class, 'showPosts'])->name('posts.show');
 Route::post('/create', [PostController::class, 'makePost'])->name('posts.create');
 Route::get('/create', [PostController::class, 'indexPosts'])->name('posts.create.index');
 Route::post('/profile', [UserController::class, 'addAvatar'])->name('profile.avatar');
-Route::post('/delete', [PostController::class, 'deletePost'])->name('posts.delete');
+Route::post('/delete/post', [PostController::class, 'deletePost'])->name('posts.delete');
+Route::get('/admin/posts', [AdminController::class, 'showPosts'])->middleware('admin')->name('admin.index.posts');
+Route::get('/admin/users', [AdminController::class, 'showUsers'])->middleware('admin')->name('admin.index.users');
+Route::post('/delete/user', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
