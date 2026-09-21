@@ -21,8 +21,8 @@
             </div>
             <form class="avatar-form" action="{{ route('profile.avatar') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                <input style="cursor: pointer; border: 1px solid #ccc; border-radius: 5px;" type="file" name="avatar" accept=".png,.jpg,.jpeg,.webp">
-                <button type="submit">Загрузить аватар</button>
+                <input type="file" name="avatar" accept=".png,.jpg,.jpeg,.webp">
+                <button class="btn btn-primary" type="submit">Загрузить аватар</button>
             </form>
             <form action="{{ route('auth.logout') }}" method="post">
                 @csrf
@@ -31,7 +31,7 @@
             <form action="{{ route('user.delete') }}" method="post">
                 @csrf
                 <input type="hidden" name="id" value="{{ auth()->getUser()->id }}">
-                <button class="delete-button" onclick="return confirm('Вы хотите удалить?');" type="submit">
+                <button class="btn btn-danger" onclick="return confirm('Вы хотите удалить?');" type="submit">
                     Удалить
                 </button>
             </form>

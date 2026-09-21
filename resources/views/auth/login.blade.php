@@ -16,7 +16,7 @@
             @csrf
             <input type="email" name="email" placeholder="Введите электронную почту" class="auth-input" value="{{ old('email') }}">
             <input type="password" name="password" placeholder="Введите пароль" class="auth-input" >
-            <button type="submit" class="auth-button"> Подтвердить </button>
+            <button type="submit" class="btn btn-primary"> Подтвердить </button>
         </form>
     </div>
 @endsection

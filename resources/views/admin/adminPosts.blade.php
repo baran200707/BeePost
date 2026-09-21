@@ -19,7 +19,7 @@
                     <form action="{{ route('posts.delete') }}" method="post">
                         @csrf
                         <input type="hidden" name="id" value="{{ $post->id }}">
-                        <button class="delete-button" onclick="return confirm('Вы хотите удалить?');" type="submit">Удалить</button>
+                        <button class="btn btn-danger" onclick="return confirm('Вы хотите удалить?');" type="submit">Удалить</button>
                     </form>
                 @endauth
             </article>

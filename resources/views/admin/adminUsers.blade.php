@@ -12,7 +12,7 @@
                     <form action="{{ route('user.delete') }}" method="post">
                         @csrf
                         <input type="hidden" name="id" value="{{ $user->id }}">
-                        <button class="delete-button" onclick="return confirm('Вы хотите удалить?');" type="submit">
+                        <button class="btn btn-danger" onclick="return confirm('Вы хотите удалить?');" type="submit">
                             Удалить
                         </button>
                     </form>
